@@ -1,11 +1,10 @@
 use anyhow::{anyhow, Result};
 use diesel::pg::PgConnection;
 use diesel::prelude::*;
-use dotenv::dotenv;
-use std::env;
-
 use diesel::r2d2::ConnectionManager;
+use dotenv::dotenv;
 use lazy_static::lazy_static;
+use std::env;
 
 type Pool = r2d2::Pool<ConnectionManager<PgConnection>>;
 pub type DbConnection = r2d2::PooledConnection<ConnectionManager<PgConnection>>;
@@ -37,8 +36,7 @@ pub fn establish_connection() -> Result<PgConnection> {
     dotenv().ok();
     let database_url = env::var("DATABASE_URL");
     if let Ok(database_url) = database_url {
-        PgConnection::establish(&database_url)
-        .map_err(|e| anyhow!("Database error: {}", e))
+        PgConnection::establish(&database_url).map_err(|e| anyhow!("Database error: {}", e))
     } else {
         Err(anyhow!("DATABASE_URL must be set"))
     }
