@@ -41,3 +41,11 @@ pub fn establish_connection() -> Result<PgConnection> {
         Err(anyhow!("DATABASE_URL must be set"))
     }
 }
+
+#[cfg(feature = "enableactix")]
+pub fn establish_connection_or_http_error() -> Result<PgConnection, error_utils::msghttp::MsgHttp> {
+    establish_connection().map_err(|_| error_utils::msghttp::MsgHttp {
+        msg: "Database error".to_string(),
+        status: 500,
+    })
+}

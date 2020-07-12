@@ -14,3 +14,7 @@ r2d2 = "0.8"
 anyhow = "1.0"
 lazy_static = "1.4"
 log = "0.4"
+error-utils = { git = "https://github.com/pablodeymo/error-utils", features = ["enableactix"], optional = true }
+
+[features]
+enableactix = ["error-utils"]
