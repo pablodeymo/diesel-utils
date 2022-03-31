@@ -1,6 +1,6 @@
 [package]
 name = "diesel-utils"
-version = "0.3.1"
+version = "0.4.0"
 authors = ["Pablo Deymonnaz <deymonnaz@gmail.com>"]
 edition = "2018"
 
@@ -14,8 +14,8 @@ r2d2 = "0.8"
 anyhow = "1.0"
 lazy_static = "1.4"
 log = "0.4"
-error-utils = { version = "0.2.0", git = "https://github.com/pablodeymo/error-utils", branch = "actix3", features = ["enableactix"], optional = true }
-actix-service = { version = "1.0.6", optional = true }
+error-utils = { version = "0.4.0", git = "https://github.com/pablodeymo/error-utils", features = ["enableactix"], optional = true }
+actix-service = { version = "2", optional = true }
 
 [features]
 enableactix = ["error-utils","actix-service"]
