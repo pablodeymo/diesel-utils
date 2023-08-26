@@ -106,6 +106,6 @@ where
                 Ok((res_val, 1, count_records))
             }
         }
-        .map_err(|e| anyhow!("Error in load_with_pagination: {}", e))
+        .map_err(|e| anyhow!("Error in load_with_pagination: {e}"))
     }
 }
